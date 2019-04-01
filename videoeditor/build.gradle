@@ -1,0 +1,54 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion compileSdkValue
+    defaultConfig {
+        minSdkVersion minSdkValue
+        targetSdkVersion targetSdkValue
+        versionCode versionCodeValue
+        versionName versionNameValue
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags "-std=c++11"
+//            }
+//            ndk {
+//                abiFilters "armeabi-v7a"
+//            }
+//        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+//    externalNativeBuild {
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+//    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    //rxjava and rxandroid
+    api 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    api 'io.reactivex.rxjava2:rxjava:2.2.4'
+
+    //lottie
+    api 'com.airbnb.android:lottie:2.7.0'
+
+    //google exoplayer
+    api 'com.google.android.exoplayer:exoplayer-core:2.9.6'
+
+    //RxFFmpeg
+    api 'com.github.microshow:RxFFmpeg:1.2.3'
+
+}
